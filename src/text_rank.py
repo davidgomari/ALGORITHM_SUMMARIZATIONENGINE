@@ -12,6 +12,13 @@ class TextRankSummarizer:
         Constructs a similarity matrix based on Cosine Similarity of TF-IDF vectors.
         Time Complexity: O(N^2 * D) where N=sentences, D=vocab size.
         """
+        
+        # OPTIMIZATION: Truncate large inputs to optimize performance
+        MAX_SENTENCES = 500
+        if len(sentences) > MAX_SENTENCES:
+            print(f"Warning: Input too long ({len(sentences)}). Truncating to {MAX_SENTENCES} for performance.")
+            sentences = sentences[:MAX_SENTENCES]
+        
         tfidf_matrix = self.vectorizer.fit_transform(sentences)
         similarity_matrix = cosine_similarity(tfidf_matrix, tfidf_matrix)
         return similarity_matrix
