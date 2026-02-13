@@ -5,8 +5,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src')))
 
-from textrank import TextRankSummarizer
-from preprocessor import TextPreprocessor
+from src.text_rank import TextRankSummarizer
+from src.preprocessor import TextPreprocessor
 
 def generate_dummy_text(n_sentences):
     """Generates a dummy text with N sentences."""
