@@ -1,11 +1,21 @@
 import sys
 import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src')))
+import unittest
+
+# 1. Get the directory where THIS script is located (tests/)
+current_dir = os.path.dirname(os.path.abspath(__file__))
+# 2. Get the parent directory (project root)
+project_root = os.path.dirname(current_dir)
+# 3. Get the src directory
+src_path = os.path.join(project_root, 'src')
+
+# 4. Add 'src' to system path so we can import 'main', 'config', etc. directly
+sys.path.append(src_path)
 
 import unittest
-from src.main import run_project
-from src.text_rank import TextRankSummarizer
-from src.preprocessor import TextPreprocessor
+from main import run_project
+from text_rank import TextRankSummarizer
+from preprocessor import TextPreprocessor
 from tests.test_data import TEST_CASES
 
 class TestSummarizationEngine(unittest.TestCase):
