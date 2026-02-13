@@ -3,10 +3,19 @@ import os
 import time
 import numpy as np
 import matplotlib.pyplot as plt
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src')))
 
-from src.text_rank import TextRankSummarizer
-from src.preprocessor import TextPreprocessor
+# 1. Get the directory where THIS script is located (tests/)
+current_dir = os.path.dirname(os.path.abspath(__file__))
+# 2. Get the parent directory (project root)
+project_root = os.path.dirname(current_dir)
+# 3. Get the src directory
+src_path = os.path.join(project_root, 'src')
+
+# 4. Add 'src' to system path so we can import 'main', 'config', etc. directly
+sys.path.append(src_path)
+
+from text_rank import TextRankSummarizer
+from preprocessor import TextPreprocessor
 
 def generate_dummy_text(n_sentences):
     """Generates a dummy text with N sentences."""
